@@ -47,31 +47,60 @@ const Clock = () => {
   const date = Date(Date.now());
 
   return (
-    <div>
-      <div>
+    <div className="flex flex-col justify-center items-center">
+      <div className="border border-[#ccc] rounded-lg m-5 p-10 font-bold text-lg">
         <h2>{text.length > 0 && `${text}, Executed at ${date})`}</h2>
         <h1>{count}</h1>
       </div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="text">Task name</label>
-        <input value={text} onChange={(e) => setText(e.target.value)} />
-        <label htmlFor="delay">Delay</label>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col m-5 w-[90%] text-left"
+      >
+        <label htmlFor="text" className="ml-5">
+          Task name
+        </label>
+        <input
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          className="border p-1 m-2 rounded-lg shadow-md"
+        />
+        <label htmlFor="delay" className="ml-5">
+          Delay
+        </label>
         <input
           type="number"
           value={delay}
           onChange={(e) => setDelay(e.target.value)}
+          className="border p-1 m-2 rounded-lg shadow-md"
+          min="1000"
+          length="4"
         />
 
-        <label htmlFor="repeat">Repeat for</label>
+        <label htmlFor="repeat" className="ml-5">
+          Repeat for
+        </label>
         <input
           type="checkbox"
           value={repeat}
           checked={repeat}
           onChange={(e) => setRepeat(e.target.checked)}
+          className="border p-1 m-2 rounded-lg shadow-md w-fit"
         />
-        <button type="submit">Start</button>
+        <button
+          type="submit"
+          className="bg-blue-300 p-2 m-2 rounded-lg shadow-lg"
+        >
+          Start
+        </button>
       </form>
-      <button onClick={handleClear}>Cleat all</button>
+      <div className="flex flex-col justify-center w-full items-center">
+        <button
+          onClick={handleClear}
+          className="w-[88%] bg-green-300 p-2 m-2 rounded-lg shadow-lg"
+        >
+          Cleat all
+        </button>
+      </div>
     </div>
   );
 };
